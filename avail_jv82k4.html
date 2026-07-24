@@ -32,14 +32,20 @@
     <div class="host">Jordan Vance</div>
     <h1>Intro Call with Jordan Vance</h1>
     <div class="meta">30 min &middot; Timezone: Pacific Time</div>
-    <div class="day"><h2 id="d0"></h2>
-      <button class="slot" data-day="0">10:00 AM</button>
-      <button class="slot" data-day="0">2:00 PM</button>
-    </div>
     <div class="day"><h2 id="d7"></h2>
       <button class="slot" data-day="7">10:30 AM</button>
       <button class="slot" data-day="7">1:00 PM</button>
-      <button class="slot" data-day="7">3:30 PM</button>
+    </div>
+    <div class="day"><h2 id="d10"></h2>
+      <button class="slot" data-day="10">10:00 AM</button>
+      <button class="slot" data-day="10">2:00 PM</button>
+    </div>
+    <div class="day"><h2 id="d11"></h2>
+      <button class="slot" data-day="11">11:30 AM</button>
+    </div>
+    <div class="day"><h2 id="d13"></h2>
+      <button class="slot" data-day="13">1:00 PM</button>
+      <button class="slot" data-day="13">3:30 PM</button>
     </div>
   </div>
 
@@ -73,8 +79,9 @@
     return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'America/Los_Angeles' });
   };
   var dayOffset = function (n) { var d = new Date(); d.setDate(d.getDate() + n); return d; };
-  document.getElementById('d0').textContent = fmt(dayOffset(0));
-  document.getElementById('d7').textContent = fmt(dayOffset(7));
+  ['7','10','11','13'].forEach(function (n) {
+    document.getElementById('d' + n).textContent = fmt(dayOffset(parseInt(n, 10)));
+  });
 
   var chosenText = '';
   document.querySelectorAll('button.slot').forEach(function (b) {
